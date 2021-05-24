@@ -1,0 +1,16 @@
+---
+-
+  name: "Check Connectivity to target servers"
+  hosts: all
+  tasks:
+    -
+      name: "Ping Test"
+      ping: ~
+    -
+      name: "Check the date of the system"
+      debug:
+        var: ansible_date_time.date
+    -
+      name: "Check the date of the system"
+      debug:
+        var: ansible_date_time.time
