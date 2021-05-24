@@ -1,0 +1,8 @@
+---
+-
+  name: "Check Connectivity to target servers"
+  hosts: all
+  tasks:
+    -
+      name: "Ping Test"
+      ping: ~

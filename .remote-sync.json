@@ -1,0 +1,19 @@
+{
+  "logger": {
+    "title": "Remote Sync"
+  },
+  "uploadOnSave": true,
+  "useAtomicWrites": false,
+  "deleteLocal": false,
+  "hostname": "15.223.70.142",
+  "port": "22",
+  "target": "/home/centos/Ansible_Demo",
+  "ignore": [
+    ".remote-sync.json",
+    ".git/**"
+  ],
+  "username": "centos",
+  "keyfile": "/Users/pranjalpatil/Desktop/Pranjal/AWS_DevOps/LightsailDefaultKey-ca-central-1.pem",
+  "watch": [],
+  "transport": "scp"
+}
