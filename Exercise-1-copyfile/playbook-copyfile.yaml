@@ -1,8 +1,12 @@
 ---
 -
   name: "Copy files to target servers"
-  hosts: all
+  hosts: target1
   tasks:
+    - name: Include vars of stuff.yaml into the 'stuff' variable (2.2).
+      include_vars:
+       file: target1.yml
+       name: server_ip
     -
       name: Check the hosts
       ping: ~
@@ -11,8 +15,21 @@
       file:
         path: /home/centos/Ansible_Demo/Exercise-1-copyfile
         state: directory
+#    -
+#      name: create a file
+#      command: touch /tmp/test-file1.txt
     -
-      name: Copy files
-      copy:
-        src: /tmp/test-file.txt
-        dest: /home/centos/Ansible_Demo/Exercise-1-copyfile
+      lineinfile:
+        path: /tmp/test-file1.txt
+        line: this is test line that is added for '{{ server_ip }}'
+    -
+      name: "display content of the file"
+      command: 'cat /tmp/test-file1.txt'
+      register: host
+    -
+      debug:
+        var: host.stdout_lines
+#      name: Copy files
+#      copy:
+#        src: /tmp/test-file.txt
+#        dest: /home/centos/Ansible_Demo/Exercise-1-copyfile

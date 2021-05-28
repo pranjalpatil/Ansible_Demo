@@ -1,20 +1,9 @@
 ---
 -
   name: "Check Connectivity to target servers"
-  hosts: target1
-  gather_facts: true
-  tasks:
-    -
-      name: "Check the date of the system"
-      debug:
-        var: ansible_date_time.date
-    -
-      name: "Check the date of the system"
-      debug:
-        var: ansible_date_time.time
--
-  name: "Check Connectivity to target servers"
   hosts: target2
+  remote_user: root
+  become: yes
   tasks:
     -
       name: "Ping Test"
@@ -26,4 +15,7 @@
     -
       debug:
         var: hosts.stdout_lines
+    -
+      name: Install python3
+      dnf: pkg=python3 state=latest
 #updated file
