@@ -2,7 +2,7 @@
 -
   name: "Check Connectivity to target servers"
   hosts: target2
-  remote_user: root
+  remote_user: centos
   become: yes
   tasks:
     -
@@ -16,6 +16,11 @@
       debug:
         var: hosts.stdout_lines
     -
-      name: Install python3
-      dnf: pkg=python3 state=latest
+      name: download files
+      sudo: yes
+      action: wget -c https://atom.io/download/rpm -O atom.rpm
+    -
+      name: Install atom
+      sudo: yes
+      action: rpm -i atom.rpm
 #updated file

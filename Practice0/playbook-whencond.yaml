@@ -1,0 +1,28 @@
+---
+-
+  name: "Check Connectivity to target servers"
+  hosts: all
+  become: true
+  tasks:
+    -
+      name: "Ping Test"
+      ping:
+    -
+      name: Update packages
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+    -
+      name: Install Java on Ubuntu/Debian
+      apt:
+          name: default-jdk
+          state: present
+      when: ansible_os_family == "Debian"
+    -
+      name: 'Install Java on Centos'
+      yum:
+        name: java-1.8.0-openjdk-devel
+        state: present
+      when: ansible_os_family == "RedHat"
+#updated file
