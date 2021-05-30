@@ -1,0 +1,10 @@
+---
+-
+  name: "Create multiple users"
+  hosts: target1, target3
+  gather_facts: false
+  become: true
+  tasks:
+    -
+      name: "Ping Test"
+      ping: ~

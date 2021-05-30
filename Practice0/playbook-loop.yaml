@@ -1,0 +1,22 @@
+---
+-
+  name: "Create multiple users"
+  hosts: target1
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Include vars of users.yaml
+      include_vars:
+       file: users.yaml
+       name: users
+    -
+      user:
+        name="{{ users.name }}"
+        uid="{{ users.uid }}"
+    -
+      name: Get the list of users
+      command: cat /etc/passwd
+      register: passwd_results
+    -
+      debug:
+        var: passwd_results.stdout_lines

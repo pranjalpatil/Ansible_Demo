@@ -2,3 +2,4 @@ target1 ansible_host=172.26.2.31 ansible_ssh_private_key_file=/home/centos/.ssh/
 target2 ansible_host=172.26.5.0 ansible_ssh_private_key_file=/home/centos/.ssh/id_rsa
 target3 ansible_host=172.26.7.43 ansible_port=22 ansible_user=admin ansible_ssh_private_key_file=/home/centos/.ssh/id_rsa
 target4 ansible_host=172.26.9.127 ansible_port=22 ansible_user=ubuntu ansible_ssh_private_key_file=/home/centos/.ssh/id_rsa
+target5 ansible_host=35.183.19.10 ansible_user=Administrator ansible_password=(gj8!x-&tVFNP@s@8zb$yKflTYJ!Cqd9 ansible_connection=winrm ansible_winrm_server_cert_validation=ignore
