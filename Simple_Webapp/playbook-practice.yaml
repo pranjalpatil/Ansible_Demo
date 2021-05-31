@@ -1,0 +1,29 @@
+---
+-
+  name: "Check Connectivity to target servers"
+  hosts: target1
+  gather_facts: true
+  tasks:
+    -
+      name: "Check the date of the system"
+      debug:
+        var: ansible_date_time.date
+    -
+      name: "Check the date of the system"
+      debug:
+        var: ansible_date_time.time
+-
+  name: "Check Connectivity to target servers"
+  hosts: target2
+  tasks:
+    -
+      name: "Ping Test"
+      ping:
+    -
+      name: 'Execute a command to display hosts file'
+      command: 'cat /etc/hosts'
+      register: hosts
+    -
+      debug:
+        var: hosts.stdout_lines
+#updated file
